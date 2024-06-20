@@ -30,7 +30,7 @@ Maggie loves cows!!!
 ### Clone the repo by running
 
 ```bash
-git clone https://github.com/xyz-mail1/bot.git
+git clone https://github.com/xyz-mail1/maggie2.git
 ```
 
 ### After Cloning add your bot token to `.env` file
