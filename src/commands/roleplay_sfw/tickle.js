@@ -1,8 +1,8 @@
 module.exports = {
-  name: "anal",
+  name: "tickle",
   cooldown: 3,
   SnM: false,
   run: async (client, message, args) => {
-    await client.nsfw(client, message, "anal");
+    await client.handleCommand(client, message, "tickle");
   },
 };
