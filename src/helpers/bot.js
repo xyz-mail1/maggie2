@@ -6,7 +6,6 @@ const {
   } = require("discord.js"),
   fs = require("node:fs"),
   Logger = require(`./logger`);
-const getColors = require("get-image-colors");
 module.exports = class BotClient extends Client {
   constructor() {
     super({
@@ -45,9 +44,7 @@ module.exports = class BotClient extends Client {
 
     this.wait = require("util").promisify(setTimeout);
     this.logger = Logger;
-
     this.commands = new Collection();
-    0;
     this.slash = new Collection();
     this.cooldowns = new Collection();
   }
