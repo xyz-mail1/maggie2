@@ -1,8 +1,10 @@
-require("module-alias/register");
-const purr = require("$purr/purr");
-const api = new purr();
-async function link() {
-  const gif = await api.nsfw("blowjob");
-  console.log(gif);
-}
-link();
+const { NekoBot } = require("nekobot-api");
+const api = new NekoBot();
+
+// maige endpoint
+(async () => {
+  const image = await api.get("ass");
+  console.log(image);
+})();
+
+console.log("");

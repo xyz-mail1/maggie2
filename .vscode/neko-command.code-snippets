@@ -1,0 +1,14 @@
+{
+  "neko": {
+    "prefix": "neko",
+    "body": [
+      "module.exports = {",
+      "  name: \"$1\",",
+      "  cooldown: 3,",
+      "  run: async (client, message, args) => {",
+      "\tawait client.handleNeko(client, message, \"$1\");",
+      "  },",
+      "};"
+    ]
+  }
+}
