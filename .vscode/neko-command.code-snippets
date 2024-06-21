@@ -3,10 +3,10 @@
     "prefix": "neko",
     "body": [
       "module.exports = {",
-      "  name: \"$1\",",
+      "  name: \"$TM_FILENAME_BASE\",",
       "  cooldown: 3,",
       "  run: async (client, message, args) => {",
-      "\tawait client.handleNeko(client, message, \"$1\");",
+      "\tawait client.handleNeko(client, message, \"$TM_FILENAME_BASE\");",
       "  },",
       "};"
     ]

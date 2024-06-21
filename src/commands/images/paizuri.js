@@ -1,7 +1,7 @@
 module.exports = {
-  name: "imganal",
+  name: "paizuri",
   cooldown: 3,
   run: async (client, message, args) => {
-    await client.handleNeko(client, message, "anal");
+    await client.handleNeko(client, message, "paizuri");
   },
 };
