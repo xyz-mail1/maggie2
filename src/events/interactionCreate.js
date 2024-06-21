@@ -12,7 +12,7 @@ module.exports = {
     if (!command) {
       interaction.reply("error");
       console.error(
-        `No command matching ${interaction.commandName} was found.`,
+        `No command matching ${interaction.commandName} was found.`
       );
       return;
     }
@@ -28,7 +28,7 @@ module.exports = {
           error.stack =
             error.stack.slice(0, 950) + "... view console for details";
       if (!error.stack) return;
-      const errorEmbed = new E().setTitle(`⛔ Prefix command error`).addFields([
+      const errorEmbed = new E().setTitle(`⛔ Slash command error`).addFields([
         { name: "Error", value: error ? codeBlock(error) : "No error" },
         {
           name: "Stack error",
