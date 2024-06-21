@@ -1,9 +1,10 @@
-const RedditImageFetcher = require("reddit-image-fetcher");
-RedditImageFetcher.fetch({
-  type: "custom",
-  total: 1,
-  subreddit: ["nsfwcosplay"],
-  allowNSFW: true,
-}).then((result) => {
-  console.log(result[0].image);
-});
+const justreddit = require("justreddit");
+(async () => {
+  const image = await justreddit.randomImageFromSub({
+    subReddit: "nsfwcosplay",
+    postGetLimit: 1,
+    sortType: "random",
+  });
+
+  console.log(image);
+})();
