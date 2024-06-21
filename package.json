@@ -17,16 +17,12 @@
     "discord-gamecord": "^4.4.1",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
-    "get-image-colors": "^4.0.1",
     "imageapi.js": "^1.7.0",
-    "justreddit": "^4.2.0",
     "module-alias": "^2.2.3",
     "nekobot-api": "^2.1.0",
     "node-fetch": "^2.7.0",
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1",
-    "pretty-error": "^4.0.0",
-    "reddit-image-fetcher": "^2.0.12",
-    "reddit-simple": "^2.1.1"
+    "pretty-error": "^4.0.0"
   }
 }
