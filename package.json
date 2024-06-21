@@ -21,6 +21,7 @@
     "module-alias": "^2.2.3",
     "nekobot-api": "^2.1.0",
     "node-fetch": "^2.7.0",
+    "nsfwhub": "^0.0.2",
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1",
     "pretty-error": "^4.0.0"

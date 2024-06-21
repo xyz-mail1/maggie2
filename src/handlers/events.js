@@ -1,12 +1,7 @@
 const { readdirSync } = require("node:fs");
-
+const getAllFiles = require("../utils/getAllFiles");
+const path = require("path");
 module.exports = (client) => {
-  readdirSync(`./src/events/`).forEach(async (file) => {
-    const event = await require(`../events/${file}`);
-    if (event.once) {
-      client.once(event.name, (...args) => event.execute(...args));
-    } else {
-      client.on(event.name, (...args) => event.execute(...args));
-    }
-  });
+  const eventFolders = getAllFiles(path.join(__dirname, "..", "events"), true);
+  console.log(eventFolders);
 };
