@@ -47,6 +47,7 @@ module.exports = class BotClient extends Client {
     this.commands = new Collection();
     this.slash = new Collection();
     this.cooldowns = new Collection();
+    this.slashData = [];
   }
 
   loadHandlers() {
