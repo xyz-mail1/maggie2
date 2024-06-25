@@ -16,7 +16,7 @@ module.exports = class BotClient extends Client {
         GB.DirectMessageTyping,
         GB.DirectMessages,
         GB.GuildEmojisAndStickers,
-        GB.GuildIntegrations,
+
         GB.GuildInvites,
         GB.GuildMembers,
         GB.GuildMessageReactions,
@@ -30,15 +30,7 @@ module.exports = class BotClient extends Client {
         GB.Guilds,
         GB.MessageContent,
       ],
-      partials: [
-        Partials.Message,
-        Partials.Channel,
-        Partials.GuildMember,
-        Partials.Reaction,
-        Partials.GuildScheduledEvent,
-        Partials.User,
-        Partials.ThreadMember,
-      ],
+      partials: [Partials.Message, ,],
       shards: "auto",
     });
 

@@ -8,7 +8,7 @@ const token = process.env.token,
   client = new BotClient();
 
 client.loadHandlers();
-
+client.handleCommands();
 process.on("unhandledRejection", (error) => {
   console.log(error);
 });
