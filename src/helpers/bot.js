@@ -6,6 +6,7 @@ const {
   } = require("discord.js"),
   fs = require("node:fs"),
   Logger = require(`./logger`);
+
 module.exports = class BotClient extends Client {
   constructor() {
     super({
