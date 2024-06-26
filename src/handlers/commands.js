@@ -3,7 +3,7 @@ const fs = require("fs");
 module.exports = (client) => {
   let total = 0; // all commands loaded
   const commandFolders = fs.readdirSync("./src/commands");
-
+  client.logger.log("----- LOADING PREFIX COMMANDS -----");
   for (const folder of commandFolders) {
     const commandFiles = fs
       .readdirSync(`./src/commands/${folder}`)
@@ -12,7 +12,6 @@ module.exports = (client) => {
     for (const file of commandFiles) {
       try {
         const command = require(`../commands/${folder}/${file}`);
-
         // Check if the command name already exists
         if (client.commands.has(command.name)) {
           client.logger.warn(`Duplicate command name: ${command.name}`);
@@ -26,8 +25,8 @@ module.exports = (client) => {
         client.logger.error(`Failed to load ${file}. Reason: ${err.message}`);
       }
     }
-    client.logger.log(`Loaded ${individual} commands from ${folder}`);
+    client.logger.log(`Loaded ${individual} commands from folder: ${folder}`);
   }
 
-  client.logger.log(`Loaded total ${total} commands`);
+  client.logger.log(`Total number of commands loaded: ${total}`);
 };

@@ -4,8 +4,9 @@ const logger = pino({
     target: "pino-pretty",
     options: {
       colorize: true,
+      colorizeObjects: true,
       ignore: "pid,hostname",
-      customColors: "info:blue,warn:yellow,error:red",
+      customColors: "info:green,warn:yellow,error:red",
     },
   },
 });
@@ -23,4 +24,4 @@ module.exports = class Logger {
   static debug(content) {
     logger.debug(content);
   }
-}
+};
