@@ -1,46 +1,51 @@
-const db = require("./db");
-
-function updateCommandUsage(user1Id, user2Id, commandName) {
-  // Update command usage count bidirectionally
-  const entry1to2 = db
-    .prepare(
-      "SELECT * FROM command_usage WHERE user_id_1 = ? AND user_id_2 = ? AND command_name = ?"
-    )
-    .get(user1Id, user2Id, commandName);
-  if (entry1to2) {
-    db.prepare(
-      "UPDATE command_usage SET count = count + 1 WHERE user_id_1 = ? AND user_id_2 = ? AND command_name = ?"
-    ).run(user1Id, user2Id, commandName);
-  } else {
-    db.prepare(
-      "INSERT INTO command_usage (user_id_1, user_id_2, command_name, count) VALUES (?, ?, ?, 1)"
-    ).run(user1Id, user2Id, commandName);
-  }
-
-  const entry2to1 = db
-    .prepare(
-      "SELECT * FROM command_usage WHERE user_id_1 = ? AND user_id_2 = ? AND command_name = ?"
-    )
-    .get(user2Id, user1Id, commandName);
-  if (entry2to1) {
-    db.prepare(
-      "UPDATE command_usage SET count = count + 1 WHERE user_id_1 = ? AND user_id_2 = ? AND command_name = ?"
-    ).run(user2Id, user1Id, commandName);
-  } else {
-    db.prepare(
-      "INSERT INTO command_usage (user_id_1, user_id_2, command_name, count) VALUES (?, ?, ?, 1)"
-    ).run(user2Id, user1Id, commandName);
+const db = require("./database");
+async function updateCommandUsage(variable, sender, target) {
+  try {
+    const select = db.prepare(
+      `SELECT * FROM counts WHERE (variable = ? AND sender = ? AND target = ?) OR (variable = ? AND sender = ? AND target = ?)`
+    );
+    const entry = await select.get(
+      variable,
+      sender,
+      target,
+      variable,
+      target,
+      sender
+    );
+    if (entry) {
+      const updateCount = db.prepare(
+        `UPDATE counts SET count = count + 1 WHERE (variable = ? AND sender = ? AND target = ?) OR (variable = ? AND sender = ? AND target = ?)`
+      );
+      updateCount.run(variable, sender, target, variable, target, sender);
+    } else {
+      const insert = db.prepare(
+        `INSERT INTO counts (variable, sender, target, count) VALUES (?, ?, ?, ?)`
+      );
+      insert.run(variable, sender, target, 1);
+    }
+  } catch (err) {
+    console.error(`Error during incrementCount: ${err}`);
   }
 }
 
-function getCommandUsage(user1Id, user2Id, commandName) {
-  // Fetch command usage count for user1 to user2
-  const entry1to2 = db
-    .prepare(
-      "SELECT * FROM command_usage WHERE user_id_1 = ? AND user_id_2 = ? AND command_name = ?"
-    )
-    .get(user1Id, user2Id, commandName);
-  return entry1to2 ? entry1to2.count : 0;
+async function getCommandUsage(variable, sender, target) {
+  try {
+    const stmt = db.prepare(
+      "SELECT count FROM counts WHERE (variable = ? AND sender = ? AND target = ?) OR (variable = ? AND sender = ? AND target = ?)"
+    );
+    const result = await stmt.all(
+      variable,
+      sender,
+      target,
+      variable,
+      target,
+      sender
+    );
+
+    return result.reduce((total, row) => total + row.count, 1);
+  } catch (err) {
+    console.error(`Error during getCount: ${err}`);
+  }
 }
 
-module.exports = { updateCommandUsage, getCommandUsage };
+module.exports = { getCommandUsage, updateCommandUsage };

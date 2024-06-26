@@ -5,6 +5,7 @@ const {
 } = require("discord.js");
 const p = require("$purr/purr");
 const api = new p();
+const { updateCommandUsage, getCommandUsage } = require("../../../utils");
 module.exports = {
   data: new ContextMenuCommandBuilder()
     .setName("Fuck")
@@ -13,13 +14,14 @@ module.exports = {
     const sender = interaction.user.id;
     const target = interaction.targetUser.id;
     const gif = await api.nsfw("fuck");
-
+    updateCommandUsage("fuck", sender, target);
+    const usageCount = await getCommandUsage("fuck", sender, target);
     const embed = new EmbedBuilder()
       .setColor("White")
       .setImage(gif.link)
       .setDescription(`<@${sender}> fucks <@${target}>`);
-
-    await interaction.reply({
+    embed.setFooter({ text: `Fuck count: ${usageCount}` });
+    interaction.reply({
       embeds: [embed],
     });
   },

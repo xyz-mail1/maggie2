@@ -8,30 +8,34 @@ module.exports = (client) => {
     const author = message.author;
     const gif = await api.sfw(type);
     if (!gif) return;
-    updateCommandUsage(author.id, mention.id, type);
-
+    updateCommandUsage(type, author.id, mention.id);
+    const usageCount = await getCommandUsage(type, author.id, mention.id);
     const embed = new Discord.EmbedBuilder()
       .setColor("Random")
       .setDescription(`${message.author} ${type}s ${mention}`)
       .setImage(gif.link);
+    embed.setFooter({ text: `${type} count: ${usageCount}` });
 
-    await message.reply({
+    return message.reply({
       embeds: [embed],
       allowedMentions: { repliedUser: false },
     });
   };
   client.nsfw = async function (client, message, type) {
     const mention = message.mentions.users.first() || message.author;
-
+    const author = message.author;
     const gif = await api.nsfw(type);
     if (!gif) return;
+    updateCommandUsage(type, author.id, mention.id);
+    const usageCount = await getCommandUsage(type, author.id, mention.id);
 
     const embed = new Discord.EmbedBuilder()
       .setColor("Random")
       .setDescription(`${message.author} ${type}s ${mention}`)
       .setImage(gif.link);
+    embed.setFooter({ text: `${type} count: ${usageCount}` });
 
-    await message.reply({
+    return message.reply({
       embeds: [embed],
       allowedMentions: { repliedUser: false },
     });
