@@ -1,9 +1,8 @@
 module.exports = {
   name: "bite",
-  aliases: ["eat", "nom"],
   cooldown: 3,
   SnM: false,
   run: async (client, message, args) => {
-    await client.purrPrefixSfw(client, message, "bite");
+    client.purrPrefixSfw(client, message, "bite");
   },
 };
