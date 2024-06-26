@@ -1,0 +1,11 @@
+{
+  "purr context nsfw": {
+    "prefix": "pcn",
+    "description": "Purr nsfw context commands",
+    "body": [
+      "const createCommand = require(\"\\$templates/purr\");",
+      "const { data, execute } = createCommand(\"$1\", \"$TM_FILENAME_BASE\");",
+      "module.exports = { data, execute };"
+    ]
+  }
+}

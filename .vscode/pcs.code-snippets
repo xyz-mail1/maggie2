@@ -1,0 +1,10 @@
+{
+  "purr sfw context": {
+    "prefix": "pcs",
+    "body": [
+      "const createCommand = require(\"\\$templates/sfwpurr\");",
+      "const { data, execute } = createCommand(\"$1\", \"$TM_FILENAME_BASE\");",
+      "module.exports = { data, execute };"
+    ]
+  }
+}

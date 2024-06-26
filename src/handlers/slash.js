@@ -36,9 +36,7 @@ module.exports = (client) => {
         body: client.slashData,
       });
     } catch (error) {
-      client.logger.error(
-        `Failed to load a slash command. Reason: ${err.message}`
-      );
+      client.logger.error(`Failed to load a slash command. Reason: ${error}`);
     }
   };
 };
