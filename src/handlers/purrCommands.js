@@ -1,11 +1,8 @@
 const Discord = require("discord.js");
 const PurrBot = require("$purr/purr");
-const {
-  ContextMenuCommandBuilder,
-  ApplicationCommandType,
-} = require("discord.js");
+
 const api = new PurrBot();
-const { updateCommandUsage, getCommandUsage } = require("../../utils");
+const { updateCommandUsage, getCommandUsage } = require("../utils/utils");
 module.exports = (client) => {
   client.purrPrefixSfw = async function (client, message, type) {
     const mention = message.mentions.users.first() || message.author;

@@ -5,7 +5,7 @@ const {
 } = require("discord.js");
 const p = require("$purr/purr");
 const api = new p();
-const { updateCommandUsage, getCommandUsage } = require("../utils");
+const { updateCommandUsage, getCommandUsage } = require("../utils/utils");
 module.exports = (commandName, type) => {
   const data = new ContextMenuCommandBuilder()
     .setName(commandName)

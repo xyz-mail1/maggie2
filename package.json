@@ -7,7 +7,7 @@
   },
   "_moduleAliases": {
     "$purr": "./wrapper",
-    "$templates": "./templates"
+    "$templates": "./src/templates"
   },
   "keywords": [],
   "author": "",

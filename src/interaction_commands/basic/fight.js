@@ -1,6 +1,6 @@
 // commands/fight.js
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { updateCommandUsage, getCommandUsage } = require("../../../utils");
+const { updateCommandUsage, getCommandUsage } = require("../../utils/utils");
 
 module.exports = {
   data: new SlashCommandBuilder()
