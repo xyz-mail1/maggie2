@@ -5,8 +5,8 @@ const {
 } = require("discord.js");
 const p = require("$purr/purr");
 const api = new p();
-
-module.exports = (commandName, nsfwType, countType, grammar) => {
+const { updateCommandUsage, getCommandUsage } = require("../utils");
+module.exports = (commandName, type) => {
   const data = new ContextMenuCommandBuilder()
     .setName(commandName)
     .setType(ApplicationCommandType.User);
@@ -14,15 +14,15 @@ module.exports = (commandName, nsfwType, countType, grammar) => {
   const execute = async (interaction, client) => {
     const sender = interaction.user.id;
     const target = interaction.targetUser.id;
-    const gif = await api.nsfw(nsfwType);
-    client.incrementCount(countType, sender, target);
-    const count = await client.getCount(countType, sender, target);
+    const gif = await api.nsfw(type);
+    updateCommandUsage(type, sender, target);
+    const usageCount = await getCommandUsage(type, sender, target);
     const embed = new EmbedBuilder()
       .setColor("White")
       .setImage(gif.link)
-      .setDescription(`<@${sender}> ${grammar} <@${target}>`)
-      .setFooter({ text: `${commandName} count: ${count}` });
-    await interaction.reply({
+      .setDescription(`<@${sender}> ${type}s <@${target}>`);
+    embed.setFooter({ text: `${type} count: ${usageCount}` });
+    interaction.reply({
       embeds: [embed],
     });
   };

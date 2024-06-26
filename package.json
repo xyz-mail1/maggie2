@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "_moduleAliases": {
-    "$purr": "./wrapper"
+    "$purr": "./wrapper",
+    "$templates": "./templates"
   },
   "keywords": [],
   "author": "",

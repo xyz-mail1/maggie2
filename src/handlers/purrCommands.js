@@ -1,9 +1,13 @@
 const Discord = require("discord.js");
 const PurrBot = require("$purr/purr");
+const {
+  ContextMenuCommandBuilder,
+  ApplicationCommandType,
+} = require("discord.js");
 const api = new PurrBot();
 const { updateCommandUsage, getCommandUsage } = require("../../utils");
 module.exports = (client) => {
-  client.handleCommand = async function (client, message, type) {
+  client.purrPrefixSfw = async function (client, message, type) {
     const mention = message.mentions.users.first() || message.author;
     const author = message.author;
     const gif = await api.sfw(type);
@@ -21,7 +25,7 @@ module.exports = (client) => {
       allowedMentions: { repliedUser: false },
     });
   };
-  client.nsfw = async function (client, message, type) {
+  client.purrPrefixNsfw = async function (client, message, type) {
     const mention = message.mentions.users.first() || message.author;
     const author = message.author;
     const gif = await api.nsfw(type);
