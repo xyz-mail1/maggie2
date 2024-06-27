@@ -12,7 +12,6 @@ module.exports = (client) => {
     const embed = new Discord.EmbedBuilder()
       .setColor("Random")
       .setImage(gif.link);
-
     if (db) {
       const author = message.author;
       const mention = message.mentions.users.first() || message.author;
