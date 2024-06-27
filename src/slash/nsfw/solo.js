@@ -4,29 +4,23 @@ const api = new purrBot();
 const { updateCommandUsage, getCommandUsage } = require("../../utils/utils");
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("cum")
-    .setDescription("You cant hold it anymore 😩")
+    .setName("masturbate")
+    .setDescription("jerk off!!")
     .addBooleanOption((option) =>
       option
         .setName("ephemeral")
         .setDescription("Whether or not the echo should be ephemeral")
     ),
+
   async execute(interaction, client) {
-    const gif = await api.nsfw("cum");
+    const gif = await api.nsfw("solo");
     if (!gif)
       return interaction.reply({
         content: "Couldn't get gif",
         ephemeral: true,
       });
 
-    const embed = new EmbedBuilder()
-      .setImage(gif.link)
-      .setColor("Green")
-      .setAuthor({
-        name: `${interaction.user.username} cums`,
-        iconURL: interaction.user.avatarURL(),
-      });
-
+    const embed = new EmbedBuilder().setImage(gif.link).setColor("Green");
     try {
       if (interaction.options.getBoolean("ephemeral")) {
         await interaction.reply({
