@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "better-sqlite3": "^11.0.0",
+    "bufferutil": "^4.0.8",
     "discord-gamecord": "^4.4.1",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
@@ -29,6 +30,7 @@
     "pretty-error": "^4.0.0",
     "reddit-image-fetcher": "^2.0.12",
     "reddit-simple": "^2.1.1",
+    "utf-8-validate": "^6.0.4",
     "winston": "^3.13.0"
   }
 }

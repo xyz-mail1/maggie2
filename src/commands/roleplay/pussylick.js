@@ -4,6 +4,6 @@ module.exports = {
   cooldown: 3,
   SnM: false,
   run: async (client, message, args) => {
-    await client.purrPrefixNsfw(client, message, "pussylick");
+    await client.purrPrefixNsfw(client, message, "pussylick", true);
   },
 };
