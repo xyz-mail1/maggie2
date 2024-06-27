@@ -4,7 +4,7 @@ const api = new purr();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("threesome")
-    .setDescription("...")
+    .setDescription("have a threesome with ppl!")
     .addUserOption((onee) =>
       onee
         .setName("person1")

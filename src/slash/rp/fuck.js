@@ -4,4 +4,4 @@ const { data, execute } = require("../../templates/purr")(
   "Fuck someone 😩",
   "fucks"
 );
-module.exports = { data, execute };
+module.exports = { SnM: true, data, execute };
