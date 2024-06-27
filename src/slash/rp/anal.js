@@ -1,7 +1,7 @@
 const { data, execute } = require("../../templates/purr")(
-  "fuck",
-  "fuck",
-  "Fuck someone 😩",
+  "anal",
+  "anal",
+  "Fuck someone in the ass 💦",
   "fucks"
 );
 module.exports = { data, execute };

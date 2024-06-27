@@ -1,0 +1,9 @@
+{
+  "slash command rp nsfw": {
+    "prefix": "spn",
+    "body": [
+      "const { data, execute } = require(\"../../templates/purr\")($1);",
+      "module.exports = { data, execute };"
+    ]
+  }
+}

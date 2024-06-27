@@ -1,27 +1,37 @@
-const {
-  ContextMenuCommandBuilder,
-  ApplicationCommandType,
-  EmbedBuilder,
-} = require("discord.js");
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const p = require("$purr/purr");
 const api = new p();
 const { updateCommandUsage, getCommandUsage } = require("../utils/utils");
-module.exports = (commandName, type) => {
-  const data = new ContextMenuCommandBuilder()
-    .setName(commandName)
-    .setType(ApplicationCommandType.User);
+module.exports = (name, type, desc, grammar) => {
+  const data = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(desc)
+    .addUserOption((option) =>
+      option
+        .setName("person")
+        .setDescription("The person to fuck")
+        .setRequired(true)
+    );
 
   const execute = async (interaction, client) => {
-    const sender = interaction.user.id;
-    const target = interaction.targetUser.id;
+    const target = interaction.options.getUser("person");
     const gif = await api.nsfw(type);
-    updateCommandUsage(type, sender, target);
-    const usageCount = await getCommandUsage(type, sender, target);
+    if (!gif)
+      return interaction.reply({
+        content: "Couldn't get gif",
+        ephemeral: true,
+      });
+    updateCommandUsage(type, interaction.user.id, target.id);
+    const usageCount = await getCommandUsage(
+      type,
+      interaction.user.id,
+      target.id
+    );
     const embed = new EmbedBuilder()
-      .setColor("White")
+      .setColor("Green")
       .setImage(gif.link)
-      .setDescription(`<@${sender}> fucks <@${target}>`);
-    embed.setFooter({ text: `${type} count: ${usageCount}` });
+      .setDescription(`<@${interaction.user.id}> ${grammar} <@${target.id}>`)
+      .setFooter({ text: `${type} count: ${usageCount}` });
     interaction.reply({
       embeds: [embed],
     });
