@@ -19,14 +19,7 @@ module.exports = {
         ephemeral: true,
       });
 
-    const embed = new EmbedBuilder()
-      .setImage(gif.link)
-      .setColor("Green")
-      .setAuthor({
-        name: `${interaction.user.username} cums`,
-        iconURL: interaction.user.avatarURL(),
-      });
-
+    const embed = new EmbedBuilder().setImage(gif.link).setColor("Green");
     try {
       if (interaction.options.getBoolean("ephemeral")) {
         await interaction.reply({
