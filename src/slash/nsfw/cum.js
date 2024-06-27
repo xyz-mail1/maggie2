@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const purrBot = require("$purr/purr");
 const api = new purrBot();
+const { updateCommandUsage, getCommandUsage } = require("../../utils/utils");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("cum")
@@ -17,10 +18,17 @@ module.exports = {
       });
     if (interaction.options.getUser("person")) {
       const target = interaction.options.getUser("person");
+      updateCommandUsage("cum", interaction.user.id, target.id);
+      const count = await getCommandUsage(
+        "cum",
+        interaction.user.id,
+        target.id
+      );
       const embed = new EmbedBuilder()
         .setImage(gif.link)
         .setColor("Green")
-        .setDescription(`${interaction.user} cums in ${target}`);
+        .setDescription(`${interaction.user} cums in ${target}`)
+        .setFooter({ text: `Cum count: ${count}` });
       return interaction.reply({ embeds: [embed] });
     } else {
       const embed = new EmbedBuilder()
