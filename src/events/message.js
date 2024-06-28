@@ -22,7 +22,7 @@ module.exports = {
 
     const lowercasedMessage = message.content.toLowerCase();
     const prefixUsed = prefixes.find((prefix) =>
-      lowercasedMessage.startsWith(prefix.toLowerCase()),
+      lowercasedMessage.startsWith(prefix.toLowerCase())
     );
 
     if (!prefixUsed) return;
@@ -36,11 +36,13 @@ module.exports = {
     const command =
       client.commands.get(commandName) ||
       client.commands.find(
-        (cmd) => cmd.aliases && cmd.aliases.includes(commandName),
+        (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
       );
 
     if (!command) return;
-
+    if (command.nsfw) {
+      if (!message.channel.nsfw) return;
+    }
     const whitelist = [
       "911822497891102741",
       "901366487850303499",
@@ -48,7 +50,7 @@ module.exports = {
       "1124643555948900433",
     ];
     // check for commands that only shiv and maggie can use
-    // 
+    //
     if (command.SnM) {
       if (!whitelist.includes(message.author.id)) return;
     }
@@ -58,8 +60,6 @@ module.exports = {
     if (command.guildOnly && message.channel.type === "dm") {
       return message.reply("I can't execute that command inside DMs!");
     }
-
-
 
     // check if args are required
     if (command.args && !args.length) {
@@ -88,8 +88,8 @@ module.exports = {
         return message
           .reply(
             `please wait ${timeLeft.toFixed(
-              1,
-            )} more second(s) before reusing the \`${command.name}\` command.`,
+              1
+            )} more second(s) before reusing the \`${command.name}\` command.`
           )
           .then((reply) => {
             message.delete({ timeout: timeLeft });
