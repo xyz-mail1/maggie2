@@ -3,6 +3,6 @@ module.exports = {
   cooldown: 3,
   SnM: false,
   run: async (client, message, args) => {
-    client.purrPrefixSfw(client, message, "angry", false);
+    client.purrPrefixSfw(client, message, "angry");
   },
 };
