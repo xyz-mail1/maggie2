@@ -21,6 +21,7 @@
     "dotenv": "^16.4.5",
     "get-image-colors": "^4.0.1",
     "imageapi.js": "^1.7.0",
+    "imgbb-uploader": "^1.5.1",
     "justreddit": "^4.2.0",
     "module-alias": "^2.2.3",
     "nekobot-api": "^2.1.0",
