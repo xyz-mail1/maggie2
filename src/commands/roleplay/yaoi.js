@@ -1,7 +1,7 @@
 module.exports = {
   name: "yaoi",
   cooldown: 3,
-  SnM: false,
+  SnM: 0,
   run: async (client, message, args) => {
     client.purrPrefixNsfw(client, message, "yaoi", true, "fucks");
   },
