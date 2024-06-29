@@ -12,6 +12,12 @@ module.exports = (client) => {
     for (const file of commandFiles) {
       try {
         const command = require(`../commands/${folder}/${file}`);
+        if (!command.name) {
+          client.logger.warn(
+            `Skipping file ${file} as it does not have a name property`
+          );
+          continue; // Skip loading this command
+        }
         // Check if the command name already exists
         if (client.commands.has(command.name)) {
           client.logger.warn(`Duplicate command name: ${command.name}`);

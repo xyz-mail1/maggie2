@@ -12,7 +12,7 @@ module.exports = (client) => {
       .setColor("Blue")
       .setImage(gif.link);
     if (!needTag) {
-      return message.reply({
+      message.reply({
         embeds: [embed],
         allowedMentions: { repliedUser: false },
       });
@@ -26,7 +26,7 @@ module.exports = (client) => {
         embed.setDescription(`${message.author} ${desc} themselves`);
       }
 
-      return message.reply({
+      message.reply({
         embeds: [embed],
         allowedMentions: { repliedUser: false },
       });

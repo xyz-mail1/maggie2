@@ -2,8 +2,8 @@ const { readdirSync } = require("node:fs");
 
 module.exports = {
   name: "help",
-  description: "help",
-  aliases: ["h"],
+  description: "help command",
+  aliases: ["h", "commands"],
 
   run: async (client, message, args) => {
     const roleColor =
@@ -16,7 +16,7 @@ module.exports = {
 
       readdirSync("./src/commands/").forEach((dir) => {
         const commands = readdirSync(`./src/commands/${dir}/`).filter((file) =>
-          file.endsWith(".js"),
+          file.endsWith(".js")
         );
 
         const cmds = commands.map((command) => {
@@ -45,13 +45,13 @@ module.exports = {
           color: roleColor,
           type: "reply",
         },
-        message,
+        message
       );
     } else {
       const command =
         client.commands.get(args[0].toLowerCase()) ||
         client.commands.find(
-          (c) => c.aliases && c.aliases.includes(args[0].toLowerCase()),
+          (c) => c.aliases && c.aliases.includes(args[0].toLowerCase())
         );
       if (!command) {
         return client.embed(
@@ -59,7 +59,7 @@ module.exports = {
             title: `Command not found`,
             type: "reply",
           },
-          message,
+          message
         );
       }
       client.embed(
@@ -78,10 +78,16 @@ module.exports = {
                 ? `\`${command.aliases.join("` `")}\``
                 : "No aliases for this command.",
             },
+            {
+              name: `USAGE: `,
+              value: command.usage
+                ? `\`${command.usage}\``
+                : "No command usage given",
+            },
           ],
           type: "reply",
         },
-        message,
+        message
       );
     }
   },
