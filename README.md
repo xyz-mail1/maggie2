@@ -19,6 +19,10 @@ Maggie loves cows!!!
 - Easy to understand handler
 - Local better-sqlite3 database to store command data
 
+## todo
+
+- change events handler so intellisense works in event files
+
 ## Requirements
 
 - Node.js v17+
