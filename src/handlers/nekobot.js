@@ -7,7 +7,7 @@ module.exports = (client) => {
 
     if (!image) return message.reply("error");
     const embed = new Discord.EmbedBuilder()
-      .setColor("Random")
+      .setColor("Blue")
       .setImage(image.message);
     await message.reply({
       embeds: [embed],

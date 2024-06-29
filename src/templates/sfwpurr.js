@@ -17,7 +17,7 @@ module.exports = (commandName, type) => {
     const gif = await api.sfw(type);
 
     const embed = new EmbedBuilder()
-      .setColor("White")
+      .setColor("Green")
       .setImage(gif.link)
       .setDescription(`<@${sender}> ${type}s <@${target}>`);
 

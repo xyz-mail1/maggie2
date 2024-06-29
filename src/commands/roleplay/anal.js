@@ -4,6 +4,6 @@ module.exports = {
   SnM: false,
   disabled: true,
   run: async (client, message, args) => {
-    client.purrPrefixNsfw(client, message, "anal");
+    client.purrPrefixNsfw(client, message, "anal", true, "fucks");
   },
 };
