@@ -11,7 +11,7 @@ module.exports = (commandName, type) => {
     .setName(commandName)
     .setType(ApplicationCommandType.User);
 
-  const execute = async (interaction, client) => {
+  const execute = async (interaction) => {
     const sender = interaction.user.id;
     const target = interaction.targetUser.id;
     const gif = await api.sfw(type);

@@ -21,7 +21,7 @@ Maggie loves cows!!!
 
 ## todo
 
-- change events handler so intellisense works in event files
+-
 
 ## Requirements
 

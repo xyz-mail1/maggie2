@@ -11,7 +11,7 @@ module.exports = {
         .setName("ephemeral")
         .setDescription("Whether or not the echo should be ephemeral")
     ),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const gif = await api.nsfw("cum");
     if (!gif)
       return interaction.reply({

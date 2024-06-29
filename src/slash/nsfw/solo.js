@@ -12,7 +12,7 @@ module.exports = {
         .setDescription("Whether or not the echo should be ephemeral")
     ),
 
-  async execute(interaction, client) {
+  async execute(interaction) {
     const gif = await api.nsfw("solo");
     if (!gif)
       return interaction.reply({

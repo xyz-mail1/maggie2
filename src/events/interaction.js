@@ -2,7 +2,7 @@ const { Events } = require("discord.js");
 
 module.exports = {
   name: Events.InteractionCreate,
-  execute: async (interaction, client) => {
+  execute: async (interaction) => {
     if (interaction.isChatInputCommand()) {
       const command = interaction.client.slash.get(interaction.commandName);
       if (!command) return;
@@ -16,14 +16,24 @@ module.exports = {
         if (command.SnM) {
           if (!whitelist.includes(interaction.user.id))
             return interaction.reply({
-              content: "u cant use this command",
+              content: "This command can only be used by shiv and maggie",
               ephemeral: true,
             });
         }
-        console.log(command);
-        await command.execute(interaction, client);
+        await command.execute(interaction);
       } catch (error) {
         console.error(error);
+        if (interaction.replied || interaction.deferred) {
+          await interaction.followUp({
+            content: "There was an error while executing this command!",
+            ephemeral: true,
+          });
+        } else {
+          await interaction.reply({
+            content: "There was an error while executing this command!",
+            ephemeral: true,
+          });
+        }
       }
     } else if (interaction.isContextMenuCommand()) {
       const contextCommand = interaction.client.slash.get(
@@ -31,9 +41,20 @@ module.exports = {
       );
       if (!contextCommand) return;
       try {
-        await contextCommand.execute(interaction, client);
+        await contextCommand.execute(interaction);
       } catch (error) {
         console.error(error);
+        if (interaction.replied || interaction.deferred) {
+          await interaction.followUp({
+            content: "There was an error while executing this command!",
+            ephemeral: true,
+          });
+        } else {
+          await interaction.reply({
+            content: "There was an error while executing this command!",
+            ephemeral: true,
+          });
+        }
       }
     }
   },

@@ -13,7 +13,7 @@ module.exports = (name, type, desc, grammar) => {
         .setRequired(true)
     );
 
-  const execute = async (interaction, client) => {
+  const execute = async (interaction) => {
     const target = interaction.options.getUser("person");
     const gif = await api.nsfw(type);
     if (!gif)

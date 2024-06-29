@@ -12,7 +12,7 @@ module.exports = {
       const embed = new EmbedBuilder()
         .setImage(link)
         .setColor("LuminousVividPink");
-      client.channels.cache.get(channel).send({ embeds: [embed] });
+      await client.channels.cache.get(channel).send({ embeds: [embed] });
     }
     try {
       setInterval(autolewd, 60000);
