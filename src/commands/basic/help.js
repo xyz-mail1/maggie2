@@ -82,7 +82,7 @@ module.exports = {
               name: `USAGE: `,
               value: command.usage
                 ? `\`${command.usage}\``
-                : "No command usage given",
+                : `\`!${command.name}\``,
             },
           ],
           type: "reply",
