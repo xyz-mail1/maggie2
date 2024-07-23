@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const purrBot = require("$purr/purr");
 const api = new purrBot();
-const { updateCommandUsage, getCommandUsage } = require("../../utils/utils");
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("masturbate")

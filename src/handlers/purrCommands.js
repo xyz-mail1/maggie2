@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const PurrBot = require("$purr/purr");
 
 const api = new PurrBot();
-const { updateCommandUsage, getCommandUsage } = require("../utils/utils");
 
 module.exports = (client) => {
   async function sendGif(client, message, type, db, isNsfw) {
@@ -16,12 +15,7 @@ module.exports = (client) => {
       const author = message.author;
       const mention = message.mentions.users.first() || message.author;
 
-      updateCommandUsage(type, author.id, mention.id);
-      const usageCount = await getCommandUsage(type, author.id, mention.id);
-
-      embed
-        .setDescription(`${message.author} ${type}s ${mention}`)
-        .setFooter({ text: `${type} count: ${usageCount}` });
+      embed.setDescription(`${message.author} ${type}s ${mention}`);
 
       if (mention === author) {
         embed.setDescription(`${message.author} ${type}s themselves`);
