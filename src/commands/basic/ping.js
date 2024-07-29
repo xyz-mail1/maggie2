@@ -5,7 +5,6 @@ module.exports = {
   SnM: false,
 
   run: async (client, message, args) => {
-    console.log(await client.ws.ping);
     await client.embed(
       {
         title: `Ping`,
