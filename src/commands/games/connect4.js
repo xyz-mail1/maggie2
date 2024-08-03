@@ -28,8 +28,5 @@ module.exports = {
       playerOnlyMessage: "Only {player} and {opponent} can use these buttons.",
     });
     Game.startGame();
-    Game.on("gameOver", (result) => {
-      console.log(result); // =>  { result... }
-    });
   },
 };

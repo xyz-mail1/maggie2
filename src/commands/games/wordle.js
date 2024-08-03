@@ -18,8 +18,5 @@ module.exports = {
     });
 
     Game.startGame();
-    Game.on("gameOver", (result) => {
-      console.log(result); // =>  { result... }
-    });
   },
 };

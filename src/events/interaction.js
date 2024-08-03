@@ -20,7 +20,7 @@ module.exports = {
               ephemeral: true,
             });
         }
-        console.log(command);
+
         await command.execute(interaction, client);
       } catch (error) {
         console.error(error);
