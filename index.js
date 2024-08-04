@@ -1,20 +1,14 @@
 require("dotenv").config();
 require("module-alias/register");
 
-var PrettyError = require("pretty-error");
-var pe = new PrettyError();
-
 const token = process.env.token,
   BotClient = require(`./src/helpers/bot`),
   client = new BotClient();
 
 client.loadHandlers();
 client.handleCommands();
-process.on("unhandledRejection", (error) => {
-  console.log(pe.render(error));
-});
-process.on("uncaughtException", (error) => {
-  console.log(pe.render(error));
+process.on(["unhandledRejection", "uncaughtException"], (error) => {
+  console.log(error);
 });
 
 client.login(token);
